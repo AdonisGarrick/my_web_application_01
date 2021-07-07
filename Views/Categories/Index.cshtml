@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ASM_02.Models.Category>
+
+@{
+    ViewBag.Title = "Categories Index";
+}
+
+<h2>Categories Index</h2>
+
+@if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.catName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.catName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (Roles.IsUserInRole(User.Identity.Name, "TrainingStaff") || Roles.IsUserInRole(User.Identity.Name, "Trainer"))
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.catID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.catID }) |
+                    </td>
+                }
+                else if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.catID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.catID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.catID })
+                    </td>
+                }
+                else
+                {
+                    <td>
+
+                        @Html.ActionLink("Details", "Details", new { id = item.catID }) |
+                    </td>
+                }
+            }
+        </tr>
+    }
+    </table>

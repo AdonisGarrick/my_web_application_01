@@ -1,0 +1,42 @@
+﻿@model ASM_02.Models.Course
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Course</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.catName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.catName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

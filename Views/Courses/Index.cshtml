@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ASM_02.Models.Course>
+
+@{
+    ViewBag.Title = "Courses Index";
+}
+
+<h2>Courses Index</h2>
+
+@if (Roles.IsUserInRole(User.Identity.Name, "Administrators") || Roles.IsUserInRole(User.Identity.Name, "TrainingStaff"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.catName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.catName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (Roles.IsUserInRole(User.Identity.Name, "TrainingStaff"))
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.cID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.cID }) |
+                    </td>
+                }
+                else if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.cID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.cID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.cID })
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.cID }) |
+                    </td>
+                }
+            }
+        </tr>
+    }
+</table>
