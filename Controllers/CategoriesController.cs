@@ -36,7 +36,7 @@ namespace ASM_02.Controllers
         }
 
         // GET: Categories/Create
-        [Authorize(Roles = "Administrators")]
+        /* [Authorize(Roles = "Administrators")] */
         public ActionResult Create()
         {
             return View();
@@ -47,7 +47,7 @@ namespace ASM_02.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrators")]
+        /*[Authorize(Roles = "Administrators")] */
         public ActionResult Create([Bind(Include = "catID,catName,description")] Category category)
         {
             if (ModelState.IsValid)
@@ -61,7 +61,7 @@ namespace ASM_02.Controllers
         }
 
         // GET: Categories/Edit/5
-        [Authorize(Roles = "Administrators, TrainingStaff, Trainer")]
+        /*[Authorize(Roles = "Administrators, TrainingStaff, Trainer")]*/
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -81,7 +81,7 @@ namespace ASM_02.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrators, TrainingStaff, Trainer")]
+        /* [Authorize(Roles = "Administrators, TrainingStaff, Trainer")] */
         public ActionResult Edit([Bind(Include = "catID,catName,description")] Category category)
         {
             if (ModelState.IsValid)
@@ -94,7 +94,7 @@ namespace ASM_02.Controllers
         }
 
         // GET: Categories/Delete/5
-        [Authorize(Roles = "Administrators")]
+        /* [Authorize(Roles = "Administrators")] */
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -110,7 +110,7 @@ namespace ASM_02.Controllers
         }
 
         // POST: Categories/Delete/5
-        [Authorize(Roles = "Administrators")]
+        /* [Authorize(Roles = "Administrators")] */
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

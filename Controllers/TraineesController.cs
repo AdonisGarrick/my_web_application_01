@@ -36,7 +36,7 @@ namespace ASM_02.Controllers
         }
 
         // GET: Trainees/Create
-        [Authorize(Roles = "Administrators, TrainingStaff")]
+        /* [Authorize(Roles = "Administrators, TrainingStaff")] */
         public ActionResult Create()
         {
             return View();
@@ -47,7 +47,7 @@ namespace ASM_02.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrators, TrainingStaff")]
+        /* [Authorize(Roles = "Administrators, TrainingStaff")] */
         public ActionResult Create([Bind(Include = "ID,TraineeDOB,Location,Language,Education,Department,Name,Email")] Trainee trainee)
         {
             if (ModelState.IsValid)
@@ -61,7 +61,7 @@ namespace ASM_02.Controllers
         }
 
         // GET: Trainees/Edit/5
-        [Authorize(Roles = "Administrators, TrainingStaff, Trainer")]
+        /* [Authorize(Roles = "Administrators, TrainingStaff, Trainer")] */
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -81,7 +81,7 @@ namespace ASM_02.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrators, TrainingStaff, Trainer")]
+        /* [Authorize(Roles = "Administrators, TrainingStaff, Trainer")]*/
         public ActionResult Edit([Bind(Include = "ID,TraineeDOB,Location,Language,Education,Department,Name,Email")] Trainee trainee)
         {
             if (ModelState.IsValid)
@@ -94,7 +94,7 @@ namespace ASM_02.Controllers
         }
 
         // GET: Trainees/Delete/5
-        [Authorize(Roles = "Administrators, TrainingStaff")]
+        /* [Authorize(Roles = "Administrators, TrainingStaff")] */
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -112,7 +112,7 @@ namespace ASM_02.Controllers
         // POST: Trainees/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrators, TrainingStaff")]
+        /* [Authorize(Roles = "Administrators, TrainingStaff")] */
         public ActionResult DeleteConfirmed(int id)
         {
             Trainee trainee = db.Trainees.Find(id);

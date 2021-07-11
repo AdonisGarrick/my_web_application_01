@@ -6,65 +6,69 @@
 
 <h2>Topic Index</h2>
 
-@if (Roles.IsUserInRole(User.Identity.Name, "Administrators") || Roles.IsUserInRole(User.Identity.Name, "TrainingStaff")
+@*@if (Roles.IsUserInRole(User.Identity.Name, "Administrators") || Roles.IsUserInRole(User.Identity.Name, "TrainingStaff")
     || Roles.IsUserInRole(User.Identity.Name, "Trainer"))
-{
+{*@
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
-}
+@*}*@
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Course.cName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.description)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table class="table table-bordered">
+    <thead class="thead-light">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Course.cName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.tName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.description)
-            </td>
+            <th style="text-align: center; background-color: skyblue;">
 
-            @if (User.Identity.IsAuthenticated)
-            {
-                if (Roles.IsUserInRole(User.Identity.Name, "Trainer"))
-                {
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.tID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.tID }) |
-                    </td>
-                }
-                else if (Roles.IsUserInRole(User.Identity.Name, "Administrators") || Roles.IsUserInRole(User.Identity.Name, "TrainingStaff"))
-                {
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.tID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.tID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.tID })
-                    </td>
-                }
-                else
-                {
-                    <td>
-                        @Html.ActionLink("Details", "Details", new { id = item.tID }) |
-                    </td>
-                }
-            }
+                @Html.DisplayNameFor(model => model.Course.cName)
+            </th>
+            <th style="text-align: center; background-color: skyblue;">
+
+                @Html.DisplayNameFor(model => model.tName)
+            </th>
+            <th style="text-align: center; background-color: skyblue;">
+
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+            <th style="text-align: center; background-color: skyblue;" colspan="3">Action</th>
         </tr>
-    }
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.cName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (Roles.IsUserInRole(User.Identity.Name, "Trainer"))
+                    {
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.tID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.tID }) |
+                        </td>
+                    }
+                    else if (Roles.IsUserInRole(User.Identity.Name, "Administrators") || Roles.IsUserInRole(User.Identity.Name, "TrainingStaff"))
+                    {
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.tID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.tID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.tID })
+                        </td>
+                    }
+@*                    else
+                    {
+                        <td>
+                            @Html.ActionLink("Details", "Details", new { id = item.tID }) |
+                        </td>
+                    }*@
+                }
+            </tr>
+        }
 </table>

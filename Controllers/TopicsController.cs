@@ -37,7 +37,7 @@ namespace ASM_02.Controllers
         }
 
         // GET: Topics/Create
-        [Authorize(Roles = "Administrators, TrainingStaff")]
+        /* [Authorize(Roles = "Administrators, TrainingStaff")] */
         public ActionResult Create()
         {
             ViewBag.cID = new SelectList(db.Courses, "cID", "cName");
@@ -49,7 +49,7 @@ namespace ASM_02.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrators, TrainingStaff")]
+        /* [Authorize(Roles = "Administrators, TrainingStaff")] */
         public ActionResult Create([Bind(Include = "tID,tName,description,cID")] Topic topic)
         {
             if (ModelState.IsValid)
@@ -64,7 +64,7 @@ namespace ASM_02.Controllers
         }
 
         // GET: Topics/Edit/5
-        [Authorize(Roles = "Administrators, TrainingStaff, Trainer")]
+        /* [Authorize(Roles = "Administrators, TrainingStaff, Trainer")] */
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -85,7 +85,7 @@ namespace ASM_02.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrators, TrainingStaff, Trainer")]
+        /* [Authorize(Roles = "Administrators, TrainingStaff, Trainer")] */
         public ActionResult Edit([Bind(Include = "tID,tName,description,cID")] Topic topic)
         {
             if (ModelState.IsValid)
@@ -99,7 +99,7 @@ namespace ASM_02.Controllers
         }
 
         // GET: Topics/Delete/5
-        [Authorize(Roles = "Administrators, TrainingStaff")]
+        /* [Authorize(Roles = "Administrators, TrainingStaff")]*/
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -117,7 +117,7 @@ namespace ASM_02.Controllers
         // POST: Topics/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrators, TrainingStaff")]
+        /* [Authorize(Roles = "Administrators, TrainingStaff")]*/
         public ActionResult DeleteConfirmed(int id)
         {
             Topic topic = db.Topics.Find(id);

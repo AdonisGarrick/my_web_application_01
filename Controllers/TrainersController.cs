@@ -36,7 +36,7 @@ namespace ASM_02.Controllers
         }
 
         // GET: Trainers/Create
-        [Authorize(Roles = "Administrators, TrainingStaff")]
+        /* [Authorize(Roles = "Administrators, TrainingStaff")] */
         public ActionResult Create()
         {
             return View();
@@ -47,7 +47,7 @@ namespace ASM_02.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrators, TrainingStaff")]
+        /* [Authorize(Roles = "Administrators, TrainingStaff")] */
         public ActionResult Create([Bind(Include = "ID,NumberPhone,Education,Name,Email")] Trainer trainer)
         {
             if (ModelState.IsValid)
@@ -61,7 +61,7 @@ namespace ASM_02.Controllers
         }
 
         // GET: Trainers/Edit/5
-        [Authorize(Roles = "Administrators, TrainingStaff")]
+        /* [Authorize(Roles = "Administrators, TrainingStaff")] */
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -81,7 +81,7 @@ namespace ASM_02.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrators, TrainingStaff")]
+        /* [Authorize(Roles = "Administrators, TrainingStaff")] */
         public ActionResult Edit([Bind(Include = "ID,NumberPhone,Education,Name,Email")] Trainer trainer)
         {
             if (ModelState.IsValid)
@@ -94,7 +94,7 @@ namespace ASM_02.Controllers
         }
 
         // GET: Trainers/Delete/5
-        [Authorize(Roles = "Administrators, TrainingStaff")]
+        /* [Authorize(Roles = "Administrators, TrainingStaff")] */
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -112,7 +112,7 @@ namespace ASM_02.Controllers
         // POST: Trainers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrators, TrainingStaff")]
+        /* [Authorize(Roles = "Administrators, TrainingStaff")] */
         public ActionResult DeleteConfirmed(int id)
         {
             Trainer trainer = db.Trainers.Find(id);

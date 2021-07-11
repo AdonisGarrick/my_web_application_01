@@ -27,7 +27,6 @@ namespace ASM_02.Migrations
                 CreateUser(context, "hieupt@fpt.edu.vn", "123456aB.c", "Nguyen Trung Hieu");
                 CreateUser(context, "tungpq@fpt.edu.vn", "123456aB.c", "Pham Quang Tung");
                 
-
                 CreateRole(context, "Administrators");
                 CreateRole(context, "TrainingStaff");
                 CreateRole(context, "Trainer");

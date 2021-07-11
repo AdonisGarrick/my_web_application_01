@@ -37,7 +37,7 @@ namespace ASM_02.Controllers
         }
 
         // GET: Courses/Create
-        [Authorize(Roles = "Administrators")]
+        /* [Authorize(Roles = "Administrators")] */
         public ActionResult Create()
         {
             ViewBag.catID = new SelectList(db.Categories, "catID", "catName");
@@ -49,7 +49,7 @@ namespace ASM_02.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrators")]
+        /* [Authorize(Roles = "Administrators")] */
         public ActionResult Create([Bind(Include = "cID,cName,description,catID")] Course course)
         {
             if (ModelState.IsValid)
@@ -64,7 +64,7 @@ namespace ASM_02.Controllers
         }
 
         // GET: Courses/Edit/5
-        [Authorize(Roles = "Administrators, TrainingStaff")]
+        /* [Authorize(Roles = "Administrators, TrainingStaff")] */
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -85,7 +85,7 @@ namespace ASM_02.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrators, TrainingStaff")]
+        /* [Authorize(Roles = "Administrators, TrainingStaff")] */
         public ActionResult Edit([Bind(Include = "cID,cName,description,catID")] Course course)
         {
             if (ModelState.IsValid)
@@ -99,7 +99,7 @@ namespace ASM_02.Controllers
         }
 
         // GET: Courses/Delete/5
-        [Authorize(Roles = "Administrators")]
+        /* [Authorize(Roles = "Administrators")] */
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -117,7 +117,7 @@ namespace ASM_02.Controllers
         // POST: Courses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrators")]
+        /* [Authorize(Roles = "Administrators")] */
         public ActionResult DeleteConfirmed(int id)
         {
             Course course = db.Courses.Find(id);

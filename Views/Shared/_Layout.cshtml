@@ -6,24 +6,73 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - CMS System</title>
+    <title>@ViewBag.Title - FPT Human Resource</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    
+    <style>
+    .nar{
+        background-color: chocolate;
+        color:white !important;
+        font-size:28px;
+
+    }
+   li > a {
+        color: white;
+        font-size: 18px;
+        color: white;
+        font-weight: lighter;
+        word-wrap: break-word;
+    }
+
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        margin-bottom: 20px;
+        margin-top: -10px;
+    }
+
+    #nav-menu {
+        background: #27d6d6;
+    }
+
+    .navar-header-fpt > a {
+        font-size: 27px;
+        color: white;
+        font-weight: lighter;
+        word-wrap: break-word;
+        margin-right: 42px;
+    }
+    .nav-a-fpt > a {
+        color: white;
+        font-size: 24px;
+    }
+   @* #fluid {
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }*@
+
+
+    </style>
+
 </head>
 
 
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-light navbar-fixed-top" id="nav-menu">
         <div class="container">
-            <div class="navbar-header">
+            <div class="navbar-header nav-a-fpt" style="float: right;">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("CMS System", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("FPT Human Resource", "Index", "Home", new { area = "" }, new { @class = "navbar-brand nav" })
             </div>
+
             @if (Request.IsAuthenticated)
             {
                 <div class="navbar-collapse collapse">
@@ -37,6 +86,7 @@
                         <li>@Html.ActionLink("Administrators", "Index", "Administrators")</li>
                     </ul>
                 </div>
+
             }
             else
             {
@@ -742,7 +792,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - CMS System</p>
+            <p style="text-align:center">&copy; @DateTime.Now.Year - FPT Human Resource</p>
         </footer>
     </div>
 
